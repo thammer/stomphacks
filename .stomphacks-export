@@ -1,0 +1,1 @@
+Created by tools/export_public.py. Its presence authorises `--sync` to DELETE unlisted files in this directory. Do not copy this file into a directory holding anything you value.

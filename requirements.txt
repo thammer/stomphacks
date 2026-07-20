@@ -1,0 +1,8 @@
+# Python dependencies for the build/analysis tools (tools/) and the
+# pedal scripts (tools-pedal/). The zoom-zt2 checkout needs these too.
+construct
+crcmod
+pyelftools
+Pillow
+mido
+python-rtmidi

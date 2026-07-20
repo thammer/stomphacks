@@ -1,0 +1,22 @@
+{
+  "name": "DIY Gain",
+  "filename": "DIYGAIN",
+  "id": "07000f81",
+  "version": "1.00",
+  "display": "DIY GAIN",
+  "badge": "SH",
+  "description": "A level trim: one knob, stock VOL curve (80 is unity gain, 100 is +3.5 dB). The simplest complete effect - copy this folder to start your own.",
+  "dspload": 8,
+  "kernel": "gain.c",
+  "state_bytes": 16,
+  "scaffold": "cleanroom",
+  "params": [
+    {
+      "name": "Level",
+      "max": 100,
+      "default": 80,
+      "curve": "stock_vol",
+      "explanation": "Output level. 80 is unity gain, 100 is +3.5 dB."
+    }
+  ]
+}

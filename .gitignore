@@ -1,0 +1,16 @@
+# Build output and environments
+build/
+__pycache__/
+.venv/
+
+# The zoom-zt2 clone the README says to put inside this repo
+zoom-zt2/
+
+# Effect binaries never live in this repo, only sources. Built effects are
+# distributed as releases, each one through the checklist in
+# docs/ip-and-licensing.md.
+*.ZD2
+*.ZIC
+*.ZIR
+*.out
+*.code
