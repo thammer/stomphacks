@@ -54,7 +54,7 @@ The ZD2 container is synthesized from scratch by the build (see
 tools/zd2_from_scratch.py), so a built effect contains nothing from any Zoom
 file at all: not in the code blob, not in the container, not in the icon.
 
-What made that possible: the container header has three fields whose meaning
+What makes that possible: the container header has three fields whose meaning
 is still undecoded (a sparse 73-byte flag block, a 3-byte category tag, and a
 16-byte trailer). Builds ship all three ZEROED, and that configuration is
 confirmed on hardware: an effect with all three fields zeroed loads, runs,
@@ -72,9 +72,9 @@ For the record, at the IP level: a modified stock effect binary still contains
 Zoom's code, so it stays on your own pedal and goes no further. Whether the
 MODIFICATION on its own (a change applied to a copy you already own, with no
 Zoom code ever changing hands) could be shared in some non-infringing form is
-a separate, unresolved question. A technical route might exist; the legal
-picture genuinely needs real counsel. Do not read that as a yes or as a no. It
-is simply not what this release is for, and it is not taught here.
+a separate, unresolved question. A technical route might exist.
+Do not read that as a yes or as a no. It
+is simply not what this release is for, and it is not covered here.
 
 ## The rules, short
 

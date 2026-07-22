@@ -1,0 +1,52 @@
+{
+  "name": "WfSplit",
+  "filename": "WFSPLIT",
+  "id": "07000f14",
+  "version": "2.02",
+  "display": "SPLIT",
+  "badge": "WF",
+  "description": "Bus splitter, the routing-family chain head: fills the Main and AUX buses. Mode DUAL sends the L input to Main and the R input to AUX (two independent paths); COPY sends the stereo input to both (two parallel paths). SidCh re-points the pedal's mono SIDECHAIN bus. Pair with a WfMerge tail. Original effect by Waveformer.",
+  "dspload": 13.94,
+  "kernel": "wfsplit.c",
+  "state_bytes": 32,
+  "scaffold": "cleanroom",
+  "params": [
+    {
+      "name": "Mode",
+      "values": [
+        "DUAL",
+        "COPY"
+      ],
+      "default": 0,
+      "explanation": "DUAL: L input to Main, R input to AUX, two independent paths. COPY: the stereo input to both, two parallel paths."
+    },
+    {
+      "name": "Main",
+      "max": 100,
+      "default": 100,
+      "explanation": "Level into the Main bus. 100 is unity."
+    },
+    {
+      "name": "AUX",
+      "max": 100,
+      "default": 100,
+      "explanation": "Level into the AUX bus. 100 is unity."
+    },
+    {
+      "name": "SidCh",
+      "values": [
+        "L+R",
+        "L",
+        "R"
+      ],
+      "default": 0,
+      "explanation": "What the mono SIDECHAIN bus carries. L+R leaves the pedal's own choice; L or R keys detectors off that input alone."
+    },
+    {
+      "name": "SidLv",
+      "max": 100,
+      "default": 50,
+      "explanation": "Level of the SIDECHAIN write. 50 is unity, 100 is double. Used only when SidCh is L or R."
+    }
+  ]
+}

@@ -159,7 +159,7 @@ def check_envelope(data):
         errs.append("target 0x%04x lacks the MS Plus family bit 0x0080 "
                     "(stock MS-70CDR+ effects carry 0x0090)" % target)
     # The remaining header invariants hold in 633/633 stock files
-    # (tools/zd2_envelope_census.py --lint) and in every build these tools
+    # (verified across the stock corpus) and in every build these tools
     # produce; a violation means a malformed or corrupted container.
     if data[93:95] != b"\x00\x00":
         errs.append("bytes @93..94 are not zero")
@@ -197,7 +197,7 @@ def check_zic(data):
     The icon is a file the pedal parses too (browser rendering, and
     whatever the boot-time scan does with it), so it gets the same
     out-of-distribution refusal as the effect container. Invariants hold
-    in 636/636 stock icons (tools/zd2_envelope_census.py --lint): ZBMP
+    in 636/636 stock icons (verified across the stock corpus): ZBMP
     magic, a sane descriptor block, at least one leading frame with sane
     dimensions, and bitmaps that tile the file exactly. The slot after
     the real frames is unconstrained (stock files carry a flag byte

@@ -224,7 +224,7 @@ def verify_envelope(raw: bytes) -> None:
 def verify_zic(raw: bytes) -> None:
     """Assert the stock-corpus structural invariants on a built ZIC icon;
     raises ValueError on violation. Every stock icon satisfies these
-    (tools/zd2_envelope_census.py --lint): ZBMP magic, a sane descriptor
+    (verified across the stock corpus): ZBMP magic, a sane descriptor
     block, at least one leading frame, bitmaps tiling the file exactly.
     The pedal parses the icon too, so the installer refuses one that
     fails; checking at build time catches the regression at the desk."""

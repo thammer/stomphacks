@@ -1,0 +1,24 @@
+{
+  "name": "WfSwap",
+  "filename": "WFSWAP",
+  "id": "07000f51",
+  "version": "2.03",
+  "display": "SWAP",
+  "badge": "WF",
+  "description": "Trades the Main and AUX buses mid-chain, so a second effect group can process the carried signal. It is its own inverse, and bypassing it is an exact no-op. After one swap the tail WfMerge must be Mode SWAP. Original effect by Waveformer.",
+  "dspload": 12.0,
+  "kernel": "wfswap.c",
+  "state_bytes": 16,
+  "scaffold": "cleanroom",
+  "params": [
+    {
+      "name": "SidCh",
+      "values": [
+        "KEEP",
+        "SWAP"
+      ],
+      "default": 0,
+      "explanation": "KEEP leaves the SIDECHAIN bus alone. SWAP re-points it at the signal the swap just brought in."
+    }
+  ]
+}

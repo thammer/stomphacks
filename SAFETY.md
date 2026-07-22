@@ -57,15 +57,16 @@ storage over a SysEx "file API", and rewrites `FLST_SEQ.ZT2`, the master effect
 list the pedal reads FIRST when it boots. A transfer that hangs partway - from
 an invalid file, a lost MIDI reply, a killed process, an unplugged cable - can
 leave the pedal with a half-written file and its file-transfer session still
-open. The pedal is still alive at that point: both real losses here started
-this way, wedged but responsive. **Whether the pedal can actually be
-recovered from there is NOT established.** In the two losses this project has
-seen, recovery-while-powered was either never attempted (the first predates
-the rescue tooling below - the advice at the time was to power-cycle, which is
-what happened) or attempted for about 20 minutes and did not succeed (the
-second - the pedal degraded to fully unresponsive regardless, and the
-power-cycle that followed came after recovery had already failed, not as its
-cause). What IS certain: a POWER-CYCLE while a transfer session is still open
+open. The pedal is still alive at that point (it keeps enumerating over USB),
+but that is not the same as being responsive to commands. **Whether the pedal
+can actually be recovered from there is NOT established.** In the two losses
+this project has seen, recovery-while-powered was either never attempted (the
+first predates the rescue tooling below - the advice at the time was to
+power-cycle, which is what happened) or attempted for about 20 minutes and
+did not succeed (the second - no successful reply was ever received back
+from the pedal during that whole attempt, and the power-cycle that followed
+came only after recovery had already failed, not as its cause). What IS
+certain: a POWER-CYCLE while a transfer session is still open
 makes the boot code parse a half-written filesystem, and it can hang there
 forever, before it ever looks at a patch, foreclosing whatever chance staying
 powered might have offered. Autosave being off does not help; no patch

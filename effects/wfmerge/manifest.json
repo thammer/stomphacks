@@ -1,0 +1,46 @@
+{
+  "name": "WfMerge",
+  "filename": "WFMERGE",
+  "id": "07000f15",
+  "version": "2.03",
+  "display": "MERGE",
+  "badge": "WF",
+  "description": "Bus merger, the routing-family chain tail: recombines the Main and AUX buses and always clears AUX. Mode DUAL or SWAP assigns the two paths to the output jacks (SWAP crossed, required after a WfSwap); MIX sums them on the Main and AUX levels. FtSw A/B turns the footswitch into a seamless A/B selector between the two paths. Original effect by Waveformer.",
+  "dspload": 13.94,
+  "kernel": "wfmerge.c",
+  "state_bytes": 32,
+  "scaffold": "cleanroom",
+  "params": [
+    {
+      "name": "Mode",
+      "values": [
+        "DUAL",
+        "SWAP",
+        "MIX"
+      ],
+      "default": 0,
+      "explanation": "DUAL: Main to the L jack, AUX to the R. SWAP: the same, crossed (required after a WfSwap). MIX: both summed into one stereo image."
+    },
+    {
+      "name": "Main",
+      "max": 100,
+      "default": 100,
+      "explanation": "Level of the Main bus. 100 is unity."
+    },
+    {
+      "name": "AUX",
+      "max": 100,
+      "default": 100,
+      "explanation": "Level of the AUX bus. 100 is unity."
+    },
+    {
+      "name": "FtSw",
+      "values": [
+        "BYP",
+        "A/B"
+      ],
+      "default": 0,
+      "explanation": "BYP: the footswitch bypasses normally. A/B: it selects which path you hear, as a seamless crossfade."
+    }
+  ]
+}

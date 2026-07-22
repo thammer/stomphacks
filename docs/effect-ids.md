@@ -69,9 +69,11 @@ page so the safety tooling recognises it as yours.
    MS-50G+ it has no effect file anywhere; it exists only as an entry in the
    pedal's own effect list, but the id is taken all the same. The installer
    knows about both and refuses them. Whether Zoom parks anything else above
-   `07000fef` is unknown, so stay below it. The gain example ships as
-   `07000f81`. Copy that folder and change the id to a value in that range you
-   are not already using.
+   `07000fef` is unknown, so stay below it. The effects shipped here already
+   occupy four ids on the page: the gain example is `07000f81`, and the
+   routing family is `07000f14` (WfSplit), `07000f15` (WfMerge) and
+   `07000f51` (WfSwap). Copy the gain folder and change the id to a value in
+   that range that nothing is using.
 
 2. The safe installer only ever touches DIY ids. `tools-pedal/pedal_diy.py`
    installs or uninstalls an effect only if its id is in a DIY range AND its id,

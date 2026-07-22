@@ -13,8 +13,9 @@ None of them are theoretical.
 
 ## What works today
 
-This is the first release. It gives you one complete, hardware-proven effect and
-the safety tooling to install it without bricking anything.
+The first release gave you one complete, hardware-proven effect and the safety
+tooling to install it without bricking anything. This release adds three routing
+effects on top of it, and the documentation for how they work.
 
 The effect is `effects/gain/`: a level trim with a single knob (80 on the knob is
 unity gain, 100 is +3.5 dB, on the same curve as a stock Zoom VOL knob). It is
@@ -29,8 +30,24 @@ container and the icon from scratch, so nothing from a stock Zoom file enters
 the build and the result is yours to share. See
 [docs/ip-and-licensing.md](docs/ip-and-licensing.md).
 
-That is all this release does, on purpose: one effect, built and installed the
-safe way.
+New in this release: `effects/wfsplit/`, `effects/wfswap/` and
+`effects/wfmerge/`, a routing family for running two independent effect
+chains on one pedal. WfSplit turns the stereo path into two mono groups (one
+per input jack, or two copies of one instrument), WfSwap switches which group
+the effects after it apply to, and WfMerge brings the groups back together,
+with modes for separate outputs per group, an A/B switch on the footswitch,
+and parallel blends. All three are hardware-tested on two separate MS-70CDR+
+units.
+
+Read [docs/chain-routing.md](docs/chain-routing.md) before you combine them:
+it explains the bus model they share, gives a recipe for each scenario, and
+carries the one hard rule (never put a stock LINE SEL in the same patch as
+the split/swap/merge family). The container format facts behind the build
+live in [docs/zd2-format.md](docs/zd2-format.md).
+
+The gain is still the place to start if you want to write your own effect,
+and the philosophy has not changed: a small set of effects, built and
+installed the safe way.
 
 If you would rather skip the toolchain entirely: one-click install of shared
 effects at https://sym.bios.is, launching soon.
