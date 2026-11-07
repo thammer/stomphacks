@@ -1332,16 +1332,29 @@ def transform_scaffold(m: dict, scaffold_asm: str) -> str:
 # --------------------------------------------------------------------------
 
 def dis_sections(path: Path) -> dict:
-    txt = subprocess.run([str(TI / "dis6x"), "--all", str(path)],
-                         capture_output=True, text=True).stdout
+    # dis6x (TI CGT 8.5.0.LTS) prints NOTHING, exit 0, for a path longer
+    # than 256 characters. So it runs from the file's own directory with the
+    # bare file name, which keeps the argument short whatever the project
+    # path is, and the build fails with a clear message when no section
+    # parses instead of a KeyError further on.
+    path = Path(path)
+    r = subprocess.run([str(TI / "dis6x"), "--all", path.name],
+                       cwd=str(path.parent or "."), capture_output=True,
+                       text=True)
     sects, cur = {}, None
-    for l in txt.splitlines():
+    for l in r.stdout.splitlines():
         mm = re.match(r"\s*(?:TEXT|DATA) Section (\S+)", l)
         if mm:
             cur = sects.setdefault(mm.group(1), [])
             continue
         if cur is not None and l.strip():
             cur.append(l)
+    if not sects:
+        die(f"dis6x listed no section of {path} (exit {r.returncode}; "
+            f"stderr: {r.stderr.strip()[:300] or 'empty'}). The build runs "
+            f"dis6x from the file's directory, so the 256-character path "
+            f"limit of TI CGT 8.5.0 is not the cause: check that the file "
+            f"exists and that the TI tools at {TI} run.")
     return sects
 
 

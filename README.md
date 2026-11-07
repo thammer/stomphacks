@@ -15,9 +15,11 @@ None of them are theoretical.
 
 The first release gave you one complete, hardware-proven effect and the safety
 tooling to install it without bricking anything. The second added three routing
-effects and the documentation for how they work. This release is about ids and
+effects and the documentation for how they work. The third was about ids and
 names, so that effects from different people can live on the same pedal, and it
-fixes a bug that reset the first knob of an effect after the tuner was used.
+fixed a bug that reset the first knob of an effect after the tuner was used.
+This release is a single fix to the build tool, for a build that failed when
+the project sits deep in a folder tree.
 
 The effect is `effects/gain/`: a level trim with a single knob (80 on the knob is
 unity gain, 100 is +3.5 dB, on the same curve as a stock Zoom VOL knob). It is
@@ -47,6 +49,17 @@ the split/swap/merge family). The container format facts behind the build
 live in [docs/zd2-format.md](docs/zd2-format.md).
 
 New in this release:
+
+* A fix for a build that stopped with `KeyError: '.text'` (issue #3). TI's
+  `dis6x` prints nothing, and still exits with 0, when the path to the file it
+  reads is longer than 256 characters, and the build tool read that empty
+  output as a missing section. It now runs `dis6x` from the build folder with
+  the bare file name, so the length of the project path no longer matters. If
+  `dis6x` ever lists no section at all, the build stops with a message that
+  names the file. Nothing else changed: the example effects build to the same
+  bytes as before, and the pedal tools are the same.
+
+New in the previous release:
 
 * Ids and names. [docs/effect-ids.md](docs/effect-ids.md) now says which ids
   to use on your own pedal and how to get a range of your own for effects you
